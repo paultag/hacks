@@ -14,14 +14,20 @@ THEME = hacks
 all: build
 
 
-build:
+build: theme render
+
+
+theme:
+	make -C $(PELICAN_THEME)/$(THEME)
+
+
+render:
 	$(PELICAN) -o $(PELICAN_OUTPUT) \
-		-m $(PELICAN_FILE_TYPE) -s $(PELICAN_CONFIG) \
+		-m $(PELICAN_FILE_TYPE) \
+		-s $(PELICAN_CONFIG) \
 		-t $(PELICAN_THEME)/$(THEME) \
 		$(PELICAN_CONTENT) \
 		$(PELICAN_FLAGS)
 
-	make -C $(PELICAN_THEME)/$(THEME)
 
-
-.PHONY: build
+.PHONY: build theme
