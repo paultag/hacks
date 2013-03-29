@@ -21,5 +21,7 @@ build:
 		$(PELICAN_CONTENT) \
 		$(PELICAN_FLAGS)
 
+	make -C $(PELICAN_THEME)/$(THEME)
+
 
 .PHONY: build
